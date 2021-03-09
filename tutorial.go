@@ -201,6 +201,26 @@ func ranges() {
 			}
 		}
 	}
+}
+
+func maps() {
+	var mp map[string]int = map[string]int{
+		"apple":  5,
+		"pear":   6,
+		"organe": 9,
+	}
+	fmt.Println(mp["apple"])
+	mp["apple"] = 900
+	mp["tim"] = 500
+	delete(mp, "apple")
+
+	val, ok := mp["pear"]
+	fmt.Println(val, ok)
+
+	fmt.Println("map and len - ", mp, len(mp))
+
+	emptyMap := make(map[string]int)
+	fmt.Println(emptyMap)
 
 }
 
@@ -213,5 +233,6 @@ func main() {
 	// switchStatement()
 	// arrays()
 	// slices()
-	ranges()
+	// ranges()
+	maps()
 }
