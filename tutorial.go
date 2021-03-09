@@ -162,6 +162,48 @@ func slices() {
 	fmt.Println(b)
 }
 
+func ranges() {
+	var a []int = []int{1, 3, 4, 56, 7, 12, 4, 6, 6}
+
+	for i := 0; i < len(a); i++ {
+		fmt.Printf("%d: %d\n", i, a[i])
+	}
+
+	sep()
+
+	for i, element := range a {
+		fmt.Printf("%d: %d\n", i, element)
+	}
+
+	sep()
+
+	for _, element := range a {
+		fmt.Printf("%d\n", element)
+	}
+
+	sep()
+
+	for i, element := range a {
+		for j, element2 := range a {
+			if element == element2 && i > j {
+				fmt.Println(element)
+			}
+		}
+	}
+
+	sep()
+
+	for i, element := range a {
+		for j := i + 1; j < len(a); j++ {
+			element2 := a[j]
+			if element2 == element {
+				fmt.Println(element)
+			}
+		}
+	}
+
+}
+
 func main() {
 	// calcAge()
 	// aritmetic()
@@ -170,5 +212,6 @@ func main() {
 	// loop()
 	// switchStatement()
 	// arrays()
-	slices()
+	// slices()
+	ranges()
 }
