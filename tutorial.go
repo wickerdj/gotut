@@ -52,6 +52,7 @@ func conditionals() {
 }
 
 func loop() {
+	// go only has one looping construct
 
 	// for { } // least amount of code
 
@@ -90,11 +91,25 @@ func switchStatement() {
 		fmt.Println("not a case")
 	}
 
+	// doesn't require a condition next to the keyword switch
+	// same as switch true
 	switch {
+	// condition needed next to the keywork case
 	case ans > 0:
 		fmt.Println("greater than zero")
 	default:
 		fmt.Println("less than zero")
+	}
+
+	v1 := 30
+
+	// switch evaluates from top to bottom, stopping when a case succeeds
+	switch {
+	case v1 > 0:
+		fmt.Println("v1")
+	case ans > 0:
+		fmt.Println("ans")
+
 	}
 
 }
