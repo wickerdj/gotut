@@ -114,11 +114,61 @@ func switchStatement() {
 
 }
 
+func arrays() {
+	var arr [5]int
+
+	arr[0] = 100
+	arr[4] = 900
+
+	fmt.Println(arr)
+	fmt.Println(arr[0])
+
+	arr1 := [3]int{4, 5, 6}
+	fmt.Println(arr1)
+
+	sum := 0
+
+	for i := 0; i < len(arr1); i++ {
+		sum += arr1[i]
+	}
+	fmt.Printf("sum of the elements in arr1 = %d\n", sum)
+
+	// multidimensional array
+	arr2D := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+	fmt.Println(arr2D)
+	fmt.Println(arr2D[0][1])
+}
+
+func slices() {
+	// slices are their own data type. Works with arrays.
+
+	var x [5]int = [5]int{1, 2, 3, 4, 5}
+
+	// slice that contains all the elements from the array
+	// var s []int = x[:]
+
+	// slice that contains the elements in position 1 and 2. value of 2 and 3
+	// var s []int = x[1:3]
+
+	// slice that contains the elements in position 1 through 3. value of 2,3, and 4
+	var s []int = x[1:4]
+	fmt.Printf("values: %v len: %d capacity %d \n", s, len(s), cap(s))
+
+	var a []int = []int{5, 6, 7, 8, 9}
+	a = append(a, 10)
+	fmt.Println(a)
+
+	b := make([]int, 5)
+	fmt.Println(b)
+}
+
 func main() {
 	// calcAge()
 	// aritmetic()
 	// compare()
 	// conditionals()
 	// loop()
-	switchStatement()
+	// switchStatement()
+	// arrays()
+	slices()
 }
