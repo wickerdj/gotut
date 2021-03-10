@@ -221,7 +221,49 @@ func maps() {
 
 	emptyMap := make(map[string]int)
 	fmt.Println(emptyMap)
+}
 
+func exampleReturns(x, y int) (z1, z2 int) {
+	defer fmt.Println("hello")
+	z1 = x + y
+	z2 = x - y
+	defer fmt.Println("before")
+	return
+}
+
+func advfunc(x int) {
+	fmt.Println("hello!", x)
+}
+
+// creating a function within a function
+func anony() {
+	test := func(x int) int {
+		fmt.Println("hello", x)
+		return x
+	}
+	test(4)
+
+	t2 := func(x int) int {
+		return x * -1
+	}(8)
+	fmt.Println(t2)
+
+	test2(test)
+
+	test3 := func(x int) int {
+		return x * 7
+	}
+	test2(test3)
+
+	returnFunc("hello")()
+}
+
+func test2(myFunc func(int) int) {
+	fmt.Println(myFunc(7))
+}
+
+func returnFunc(x string) func() {
+	return func() { fmt.Println(x) }
 }
 
 func main() {
@@ -234,5 +276,13 @@ func main() {
 	// arrays()
 	// slices()
 	// ranges()
-	maps()
+	// maps()
+	// ans1, ans2 := exampleReturns(4, 5)
+	// fmt.Println(ans1, ans2)
+
+	// assigns a function to a variable
+	x := advfunc
+	x(5)
+
+	anony()
 }
