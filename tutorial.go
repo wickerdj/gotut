@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 )
@@ -409,6 +410,49 @@ func (s *Student) getMaxGrade() int {
 	return curMax
 }
 
+func interfaces() {
+	c1 := circle{4.5}
+	r1 := rect{5, 6}
+	fmt.Println(c1.area(), r1.area())
+
+	shapes := []shape{&c1, &r1}
+	fmt.Println(shapes)
+
+	for _, s := range shapes {
+		fmt.Println(s.area())
+	}
+
+	for _, s := range shapes {
+		fmt.Println(getArea(s))
+	}
+
+}
+
+type shape interface {
+	area() float64
+}
+
+type circle struct {
+	radius float64
+}
+
+type rect struct {
+	width  float64
+	height float64
+}
+
+func (r *rect) area() float64 {
+	return r.width * r.height
+}
+
+func (c *circle) area() float64 {
+	return math.Pi * c.radius * c.radius
+}
+
+func getArea(s shape) float64 {
+	return s.area()
+}
+
 func main() {
 	// calcAge()
 	// aritmetic()
@@ -431,5 +475,6 @@ func main() {
 	// mutableAndImmutable()
 	// pointersAndDeference()
 	// structsAndCustomTypes()
-	structMethods()
+	// structMethods()
+	interfaces()
 }
