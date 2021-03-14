@@ -266,6 +266,35 @@ func returnFunc(x string) func() {
 	return func() { fmt.Println(x) }
 }
 
+func mutableAndImmutable() {
+	// Immutable
+	// seems to store the value in memory
+	x := 5
+	y := x
+	y = 7
+	fmt.Println("values:", x, y)
+
+	// slice and map is a mutable type
+	// seems to store the memory address
+	var s []int = []int{3, 4, 5}
+	t := s
+	t[0] = 100
+	s[1] = 200
+	fmt.Println("slice and map:", s, t)
+
+	var a [2]int = [2]int{3, 4}
+	b := a
+	b[0] = 100
+	fmt.Println("array:", a, b)
+
+	var c []int
+	// slices()"after changeFirst:", c)
+}
+
+func changeFrist(slice []int) {
+	slice[0] = 1000
+}
+
 func main() {
 	// calcAge()
 	// aritmetic()
@@ -281,8 +310,9 @@ func main() {
 	// fmt.Println(ans1, ans2)
 
 	// assigns a function to a variable
-	x := advfunc
-	x(5)
+	// x := advfunc
+	// x(5)
+	// anony()
 
-	anony()
+	mutableAndImmutable()
 }
