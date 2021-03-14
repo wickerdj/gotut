@@ -327,6 +327,45 @@ func changeValue2(str string) string {
 	return str
 }
 
+func structsAndCustomTypes() {
+	var p1 Point = Point{1, 2}
+	p2 := Point{-5, 7}
+	p3 := Point{x: 3}
+	p4 := &Point{y: 6}
+
+	fmt.Println(p1)
+	fmt.Println(p2)
+	fmt.Println(p3)
+	fmt.Println(p4)
+	changeX(p4)
+	fmt.Println(p4)
+
+	c1 := Circle{4.56, &Point{4, 5}}
+	fmt.Println(c1, c1.center, c1.center.x)
+
+	c2 := Circle2{5.87, &Point{2, 4}}
+	fmt.Println(c2, c2.x)
+}
+
+type Point struct {
+	x int32
+	y int32
+}
+
+func changeX(pt *Point) {
+	pt.x = 100
+}
+
+type Circle struct {
+	radius float64
+	center *Point
+}
+
+type Circle2 struct {
+	radius float64
+	*Point
+}
+
 func main() {
 	// calcAge()
 	// aritmetic()
@@ -347,5 +386,6 @@ func main() {
 	// anony()
 
 	// mutableAndImmutable()
-	pointersAndDeference()
+	// pointersAndDeference()
+	structsAndCustomTypes()
 }
