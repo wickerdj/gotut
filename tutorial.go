@@ -287,12 +287,44 @@ func mutableAndImmutable() {
 	b[0] = 100
 	fmt.Println("array:", a, b)
 
-	var c []int
-	// slices()"after changeFirst:", c)
+	var c []int = []int{1, 2, 3}
+	fmt.Println("before changeFirst:", c)
+	changeFrist(c)
+	fmt.Println("after changeFirst:", c)
 }
 
 func changeFrist(slice []int) {
 	slice[0] = 1000
+}
+
+func pointersAndDeference() {
+	x := 7
+	fmt.Println("memory address:", &x, "with a value of", x)
+	y := &x
+	fmt.Println("memory address:", &y, "with a value of", y)
+	*y = 8
+	fmt.Println("memory address:", &y, "with a value of", y)
+	fmt.Println("memory address:", &x, "with a value of", x)
+
+	toChange := "hello"
+	fmt.Println("before toChange:", toChange)
+	changeValue(&toChange)
+	fmt.Println("after toChange:", toChange)
+
+	toChange2 := "hello"
+	fmt.Println("before toChange2:", toChange2)
+	toChange2 = changeValue2(toChange2)
+	fmt.Println("after toChange2:", toChange2)
+
+}
+
+func changeValue(str *string) {
+	*str = "changed!"
+}
+
+func changeValue2(str string) string {
+	str = "changed!"
+	return str
 }
 
 func main() {
@@ -314,5 +346,6 @@ func main() {
 	// x(5)
 	// anony()
 
-	mutableAndImmutable()
+	// mutableAndImmutable()
+	pointersAndDeference()
 }
